@@ -2,8 +2,7 @@
     "name": "zeropub/zeropub-php",
     "description": "Paquet Composer pour utiliser ZeroPub.",
     "require": {
-        "php": ">=5.4",
-        "guzzle/guzzle": "<4.0,>=3.8"
+        "php": ">=5.4"
     },
     "autoload": {
         "psr-0": {
