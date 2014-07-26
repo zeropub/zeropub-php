@@ -1,0 +1,21 @@
+{
+    "name": "zeropub/zeropub-php",
+    "description": "Paquet Composer pour utiliser ZeroPub.",
+    "require": {
+        "php": ">=5.4",
+        "guzzle/guzzle": "<4.0,>=3.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "ZeroPub": "src/"
+        }
+    },
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Maxime VALETTE",
+            "email": "maxime@maximevalette.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
