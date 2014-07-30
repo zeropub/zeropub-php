@@ -50,7 +50,38 @@ Vous pouvez faire votre propre classe en implémentant `ZeroPub\Provider\OutputI
 
 ## Enregistrer une zone ZeroPub
 
+Les zones de publicités doivent être enregistrés dans l'instance ZeroPub à partir d'un modèle Ad :
 
+```PHP
+use ZeroPub\Model\Ad;
+
+$ad = new Ad();
+
+$ad->setCode('code_de_la_zone');
+$ad->setAd(<<<EOT
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-01923803219812";
+/* Leaderboard ROS */
+google_ad_slot = "1328731298";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+EOT
+);
+
+$ad->setWidth(728);
+$ad->setHeight(90);
+$ad->setPlaceholder('http://ads.buporez.com/img/banner-728-2-ceci.png');
+
+$zeroPub->registerAd($ad);
+```
+
+Notez que les données enregistrées doivent correspondre aux données que vous avez renseignées dans votre interface
+éditeur ZeroPub (nous faisons un callback si vous souhaitez les récupérer, voir API ci-dessous).
 
 ## Afficher une zone ZeroPub
 
