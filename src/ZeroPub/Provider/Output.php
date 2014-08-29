@@ -19,7 +19,6 @@ class Output implements OutputInterface
         return <<<HTML
 <script type="text/javascript" src="{$params['js']['honeypot']}"></script>
 <script type="text/javascript" src="{$params['js']['main']}"></script>
-<link rel="stylesheet" href="{$params['css']['main']}"/>
 HTML;
     }
 

@@ -138,12 +138,10 @@ class ZeroPub
         $scriptVersion = $this->getScriptVersion();
 
         $args = array();
-        $cssArgs = null;
 
         if ($scriptVersion != 1) {
 
             $args['ver'] = $scriptVersion;
-            $cssArgs = '?ver=' . $scriptVersion;
 
         }
 
@@ -159,9 +157,6 @@ class ZeroPub
                 'js' => array(
                     'honeypot' => 'http://' . $hostname . '/advertisement.js',
                     'main' => 'http://' . $hostname . '/' . $scriptName . '.js' . $jsArgs,
-                ),
-                'css' => array(
-                    'main' => 'http://' . $hostname . '/' . $scriptName . '.css' . $cssArgs,
                 ),
             )
         );
