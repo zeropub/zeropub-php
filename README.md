@@ -108,59 +108,7 @@ Enfin, pour que ZeroPub fonctionne, vous devez charger les scripts. La méthode 
 echo $zeroPub->displayScripts();
 ```
 
-## Mettre en place les callbacks
-
-Pour communiquer avec les serveurs ZeroPub à plusieurs moments de l'utilisation du script (identification utilisateur,
-mise à jour des configurations), vous devez mettre en place des URL de callback publiques.
-
-### Connexion d'un utilisateur
-
-Exemple :
-
-```
-http://www.monsiteweb.com/external/zp-user-connect?zp_hash=2bd34a8716a353ea8a22dbfdb3a6b8ef&zp_back=http%3A%2F%2Fwww.monsiteweb.com%2F
-```
-
-Un utilisateur qui vient de regarder une vidéo peut se connecter avec un identifiant de réseau social pour garder sa
-participation enregistrée. N'importe quel utilisateur qui a regardé une vidéo sera aussi enregistré via un cookie
-anonyme s'il ne souhaite pas se connecter.
-
-À chaque fois, l'utilisateur sera redirigé sur cette URL après son identification. Les paramètres GET sont :
-
-- **zp_hash** - La valeur du cookie `zp_hash` qui identifie l'utilisateur
-- **zp_back** - L'URL vers laquelle rediriger l'utilisateur après le traitement du callback.
-
-Un prototype de script PHP correspondant à cette logique :
-
-```PHP
-if (isset($_GET['zp_back']) && isset($_GET['zp_hash'])) {
-
-    setcookie('zp_hash', $_GET['zp_back'], time() + 86400 * 365 * 10, '/');
-
-    header('Location: ' . $_GET['zp_back']);
-    exit;
-
-}
-```
-
-### Déconnexion d'un utilisateur
-
-Exemple :
-
-```
-http://www.monsiteweb.com/external/zp-user-disconnect
-```
-
-Pour une raison ou une autre, l'utilisateur peut décider de se déconnecter de son compte ZeroPub. Vous devez fournir
-une URL qui permettra de supprimer le cookie `zp_hash` sur votre domaine.
-
-Un prototype de script PHP correspondant à cette logique :
-
-```PHP
-setcookie('zp_hash', null, time() - 1, '/');
-```
-
-### API interne avec les serveurs ZeroPub
+## Mettre en place l'API interne avec les serveurs ZeroPub
 
 Pour permettre de garder la configuration en phase avec les informations données sur l'interface éditeur, nous
 devons communiquer avec votre site via une API interne sur une URL que vous devez fournir. Exemple :
