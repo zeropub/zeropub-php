@@ -238,7 +238,7 @@ class ZeroPub
      */
     public function setScriptVersion($scriptVersion)
     {
-        $this->scriptVersion = (int) $scriptVersion;
+        $this->scriptVersion = $scriptVersion;
     }
 
     /**
